@@ -3,359 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>For My Jaan ❤️</title>
-
+    <title>For My Jaan 💌</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Floating hearts background -->
-    <div id="heart-background"></div>
+    <!-- Floating background hearts -->
+    <div class="hearts-bg"></div>
 
-    <main id="game">
+    <!-- WELCOME -->
+    <section class="screen active" id="welcome">
+        <div class="content">
+            <div class="big-heart">❤️</div>
+            <h1>Hi jaan kemon aso?</h1>
+            <p class="welcome-text">
+                I tried to make a small game for you, hope you enjoy playing it 😘
+            </p>
+            <p class="tap">Tap anywhere to continue 💌</p>
+        </div>
+    </section>
 
-        <!-- =========================
-             LEVEL 1 - WELCOME
-        ========================== -->
 
-        <section class="screen active" id="welcome">
-
-            <div class="card welcome-card">
-
-                <div class="big-heart">❤️</div>
-
-                <h1>Hi jaan 💌</h1>
-
-                <p>
-                    Hi jaan kemon aso? I tried to make a small game for you,
-                    hope you enjoy playing it 😘
-                </p>
-
-                <div class="tap-hint">
-                    Tap anywhere to continue ❤️
-                </div>
-
+    <!-- HER PHOTOS -->
+    <section class="screen" id="her-photo">
+        <div class="content">
+            <div class="photo-collage her-collage">
+                <img src="images/her1.jpg" alt="My beautiful girl">
+                <img src="images/her2.jpg" alt="My beautiful girl">
+                <img src="images/her3.jpg" alt="My beautiful girl">
             </div>
 
-        </section>
+            <h1>You're mine💌</h1>
+            <p class="tap">Tap anywhere ❤️</p>
+        </div>
+    </section>
 
 
-        <!-- =========================
-             LEVEL 2 - HER PHOTO
-        ========================== -->
+    <!-- HEART GAME -->
+    <section class="screen" id="heart-game">
+        <div class="content game-content">
+            <h1>Catch 5 hearts jaan ❤️</h1>
+            <p>Click all 5 hearts to continue!</p>
 
-        <section class="screen" id="her-photo">
-
-            <div class="card">
-
-                <h1>Look who's here 👀❤️</h1>
-
-                <div class="photo-collage her-collage">
-
-                    <img src="images/her1.jpg" alt="My beautiful girl">
-                    <img src="images/her2.jpg" alt="My beautiful girl">
-                    <img src="images/her3.jpg" alt="My beautiful girl">
-
-                </div>
-
-                <h2>You're mine💌</h2>
-
-                <div class="tap-hint">
-                    Tap anywhere to continue ❤️
-                </div>
-
+            <div class="score">
+                Hearts caught: <span id="heart-score">0</span>/5
             </div>
 
-        </section>
+            <div id="heart-area"></div>
+        </div>
+    </section>
 
 
-        <!-- =========================
-             LEVEL 3 - HEART GAME
-        ========================== -->
+    <!-- QUIZ -->
+    <section class="screen" id="quiz">
+        <div class="content">
+            <h1>congrats you've made it to the next round💌</h1>
 
-        <section class="screen" id="heart-game">
+            <div class="quiz-card">
+                <h2>When was the first time we met?👀</h2>
 
-            <div class="card">
-
-                <h1>Okay jaan... let's play 👀</h1>
-
-                <p>Catch <strong>5 hearts</strong> to unlock the next level ❤️</p>
-
-                <div class="heart-counter">
-                    Hearts: <span id="heart-count">0</span>/5
-                </div>
-
-                <div id="heart-arena"></div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             LEVEL 4 - QUIZ
-        ========================== -->
-
-        <section class="screen" id="quiz">
-
-            <div class="card">
-
-                <div class="celebration">🥳💌</div>
-
-                <h1>Congrats!</h1>
-
-                <p class="congrats-text">
-                    congrats you've made it to the next round💌
-                </p>
-
-                <div class="quiz-box">
-
-                    <h2>
-                        When was the first time we met? 👀
-                    </h2>
-
-                    <button class="quiz-option" data-correct="false">
-                        14.05.2025
-                    </button>
-
-                    <button class="quiz-option" data-correct="true">
-                        30.06.2025
-                    </button>
-
-                    <button class="quiz-option" data-correct="false">
-                        07.07.2025
-                    </button>
-
-                </div>
-
-                <p id="quiz-feedback"></p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             LEVEL 5 - ENVELOPE
-        ========================== -->
-
-        <section class="screen" id="envelope">
-
-            <div class="card">
-
-                <h1>One little message for you 💌</h1>
-
-                <p>Tap the envelope jaan...</p>
-
-                <div class="envelope" id="envelope-button">
-
-                    <div class="envelope-top"></div>
-
-                    <div class="envelope-body">
-                        💌
-                    </div>
-
-                </div>
-
-                <div id="love-letter" class="love-letter">
-
-                    Thank you jaan for being the best chapter of my life,
-                    I'm indeed very lucky to have you in my life and I love
-                    you so much my bbygirl😘💌
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             LEVEL 6 - QUESTION
-        ========================== -->
-
-        <section class="screen" id="question-one">
-
-            <div class="card">
-
-                <h1>Okay... serious question now 👀</h1>
-
-                <h2>
-                    What did you see in me that made you fall in love with me?👀
-                </h2>
-<form action="https://formspree.io/f/moeqldol" method="POST">
-    <input type="hidden" name="question" value="What did you see in me that made you fall in love with me?">
-
-    <textarea
-        name="answer"
-        placeholder="Write your answer here jaan... ❤️"
-        required
-    ></textarea>
-
-    <button type="submit">Done 💌</button>
-</form>
-
-        <!-- =========================
-             LEVEL 7 - OUR PHOTOS
-        ========================== -->
-
-        <section class="screen" id="our-photos">
-
-            <div class="card">
-
-                <h1>Our little memories ❤️</h1>
-
-                <div class="photo-collage us-collage">
-
-                    <img src="images/us1.jpg" alt="Us">
-                    <img src="images/us2.jpg" alt="Us">
-                    <img src="images/us3.jpg" alt="Us">
-
-                </div>
-
-                <h2>Usss together💌</h2>
-
-                <div class="tap-hint">
-                    Tap anywhere to continue ❤️
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             LEVEL 8 - QUESTION TWO
-        ========================== -->
-
-        <section class="screen" id="question-two">
-
-            <div class="card">
-
-                <h1>Another tricky one 👀</h1>
-
-                <h2>
-                    What do you think Ashiq loves the most about you?👀
-                    <br>
-                    Drop a guess.
-                </h2>
-
-               <form action="https://formspree.io/f/moeqldol" method="POST">
-    <input type="hidden" name="question" value="What do you think Ashiq loves the most about you?">
-
-    <textarea
-        name="answer"
-        placeholder="Drop your guess jaan... 👀"
-        required
-    ></textarea>
-
-    <button type="submit">Done 💌</button>
-</form>
-
-        <!-- =========================
-             LEVEL 9 - MEMORY PUZZLE
-        ========================== -->
-
-        <section class="screen" id="puzzle">
-
-            <div class="card">
-
-                <h1>Final challenge 🧩❤️</h1>
-
-                <p>
-                    Match all the pairs to complete the game.
-                </p>
-
-                <div id="memory-board"></div>
-
-                <p id="puzzle-message"></p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FINAL MESSAGE
-        ========================== -->
-
-        <section class="screen" id="final">
-
-            <div class="card final-card">
-
-                <div class="final-hearts">
-                    ❤️ 💌 ❤️
-                </div>
-
-                <h1>
-                    Congratulationsssss! 🥳
-                </h1>
-
-                <h2>
-                    you've made it to the next level👀🥳
-                </h2>
-
-                <div class="final-message">
-
-                    <p>
-                        i know this is not the best, but vablam ektu try kore
-                        dekhhi kmnhy, hope youu will apologize my mistakes.
-                    </p>
-
-                    <p>
-                        Jaan you really mean everything to me and for me
-                        putting up a smile on you face means everything.
-                        I hope i could make you simle a bit today.
-                    </p>
-
-                    <p>
-                        And I promise I'll do everything I can to keep you happy.
-                    </p>
-
-                    <h2>
-                        Will you marry me jaan? 💍
-                    </h2>
-
-                    <h1>
-                        I love you jaan 💌
-                    </h1>
-
-                </div>
-
-                <button class="yes-button" onclick="showFinalLove()">
-                    YES ❤️
+                <button class="quiz-option" data-correct="false">
+                    14.05.2025
                 </button>
 
+                <button class="quiz-option" data-correct="true">
+                    30.06.2025
+                </button>
+
+                <button class="quiz-option" data-correct="false">
+                    07.07.2025
+                </button>
             </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- Popup -->
-    <div id="popup" class="popup">
-
-        <div class="popup-content">
-
-            <div class="popup-image">
-                🥳❤️
-            </div>
-
-            <h2>yayy you got it right🥳🥳</h2>
-
-            <button class="main-button" onclick="closePopup()">
-                Continue 💌
-            </button>
-
         </div>
+    </section>
 
+
+    <!-- CORRECT POPUP -->
+    <div class="popup" id="correct-popup">
+        <div class="popup-box">
+            <div class="popup-heart">🥳</div>
+            <h2>yayy you got it right🥳🥳</h2>
+            <button id="popup-next">Continue 💌</button>
+        </div>
     </div>
 
 
-    <script src="script.js"></script>
+    <!-- ENVELOPE -->
+    <section class="screen" id="envelope">
+        <div class="content">
+            <h1>A little message for you 💌</h1>
 
+            <div class="envelope-container" id="envelope-btn">
+                <div class="envelope">
+                    <div class="flap"></div>
+                    <div class="letter-preview">💌</div>
+                </div>
+            </div>
+
+            <p id="envelope-hint">Tap the envelope jaan ❤️</p>
+
+            <div class="love-letter" id="love-letter">
+                <p>
+                    Thank you jaan for being the best chapter of my life,
+                    I'm indeed very lucky to have you in my life and I love
+                    you so much my bbygirl😘💌
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- QUESTION ONE -->
+    <section class="screen" id="question-one">
+        <div class="content">
+            <h1>One question for you 👀</h1>
+
+            <h2>
+                What did you see in me that made you fall in love with me?👀
+            </h2>
+
+            <textarea
+                id="answer-one"
+                placeholder="Tell me jaan... ❤️"
+                maxlength="2000"
+            ></textarea>
+
+            <button class="done-btn" id="answer-one-btn">
+                Done 💌
+            </button>
+
+            <p class="sending" id="sending-one"></p>
+        </div>
+    </section>
+
+
+    <!-- OUR PHOTOS -->
+    <section class="screen" id="our-photos">
+        <div class="content">
+            <div class="photo-collage couple-collage">
+                <img src="images/us1.jpg" alt="Us">
+                <img src="images/us2.jpg" alt="Us">
+                <img src="images/us3.jpg" alt="Us">
+            </div>
+
+            <h1>Usss together💌</h1>
+            <p class="tap">Tap anywhere ❤️</p>
+        </div>
+    </section>
+
+
+    <!-- QUESTION TWO -->
+    <section class="screen" id="question-two">
+        <div class="content">
+            <h1>Okay, one last question 👀</h1>
+
+            <h2>
+                What do you think Ashiq loves the most about you?👀
+            </h2>
+
+            <p class="subtitle">Drop a guess 😭❤️</p>
+
+            <textarea
+                id="answer-two"
+                placeholder="What's your guess jaan? 👀"
+                maxlength="2000"
+            ></textarea>
+
+            <button class="done-btn" id="answer-two-btn">
+                Done 💌
+            </button>
+
+            <p class="sending" id="sending-two"></p>
+        </div>
+    </section>
+
+
+    <!-- MEMORY PUZZLE -->
+    <section class="screen" id="puzzle">
+        <div class="content">
+            <h1>Memory Game ❤️</h1>
+            <p>Match all the pairs to unlock the final level!</p>
+
+            <div class="memory-board" id="memory-board"></div>
+
+            <p id="memory-status"></p>
+        </div>
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="screen" id="final">
+        <div class="content final-content">
+
+            <div class="final-hearts">💖 💍 💖</div>
+
+            <h1>
+                Congratulationsssss, you've made it to the next level👀🥳
+            </h1>
+
+            <div class="final-letter">
+
+                <p>
+                    i know this is not the best, but vablam ektu try kore
+                    dekhhi kmnhy, hope youu will apologize my mistakes.
+                    Jaan you really mean everything to me and for me putting
+                    up a smile on you face means everything. I hope i could
+                    make you simle a bit today.
+                </p>
+
+                <p>
+                    And I promise I'll do everything I can to keep you happy.
+                    Will you marry me jaan?💍
+                </p>
+
+                <h2>
+                    I love you jaan 💌
+                </h2>
+
+            </div>
+
+            <div class="ring">💍</div>
+
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
