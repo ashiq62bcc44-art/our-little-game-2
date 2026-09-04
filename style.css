@@ -1,27 +1,28 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html,
 body {
-    font-family: Georgia, "Times New Roman", serif;
-    min-height: 100vh;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at top, #fff5f7, #ffdfe7);
-
-    color: #5a2634;
+    width: 100%;
+    min-height: 100%;
 }
 
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,190,210,0.5), transparent 30%),
+        linear-gradient(135deg, #ffe6ee, #fff5f8, #ffdce7);
+    color: #6b2140;
+    overflow: hidden;
+}
 
-/* =========================
-   FLOATING HEART BACKGROUND
-========================= */
+/* ---------------- BACKGROUND HEARTS ---------------- */
 
-#heart-background {
+.hearts-bg {
     position: fixed;
     inset: 0;
     overflow: hidden;
@@ -29,671 +30,491 @@ body {
     z-index: 0;
 }
 
-.floating-heart {
+.bg-heart {
     position: absolute;
     bottom: -50px;
-    animation: floatUp linear forwards;
-    opacity: 0.6;
+    font-size: 20px;
+    opacity: 0.25;
+    animation: floatHeart linear infinite;
 }
 
-@keyframes floatUp {
-
-    0% {
+@keyframes floatHeart {
+    from {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
 
     15% {
-        opacity: 0.7;
+        opacity: 0.25;
     }
 
-    100% {
+    to {
         transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
     }
-
 }
 
-
-/* =========================
-   GAME SCREEN
-========================= */
-
-#game {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    z-index: 2;
-}
+/* ---------------- SCREENS ---------------- */
 
 .screen {
-
-    position: absolute;
+    position: fixed;
     inset: 0;
-
     display: none;
-
     justify-content: center;
     align-items: center;
-
-    padding: 20px;
-
     text-align: center;
+    padding: 25px;
+    z-index: 2;
 }
 
 .screen.active {
     display: flex;
-
-    animation: screenIn 0.8s ease;
 }
 
-@keyframes screenIn {
-
-    from {
-        opacity: 0;
-        transform: scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-
-/* =========================
-   CARD
-========================= */
-
-.card {
-
-    width: min(700px, 95vw);
-
-    max-height: 92vh;
+.content {
+    width: min(850px, 95vw);
+    max-height: 95vh;
     overflow-y: auto;
-
-    padding: 40px 30px;
-
-    background: rgba(255, 255, 255, 0.88);
-
-    border-radius: 30px;
-
-    box-shadow:
-        0 20px 60px rgba(130, 40, 70, 0.15);
-
-    backdrop-filter: blur(10px);
+    padding: 25px;
+    scrollbar-width: none;
 }
 
-.card h1 {
-    margin-bottom: 20px;
+.content::-webkit-scrollbar {
+    display: none;
 }
 
-.card h2 {
-    margin: 15px 0;
+h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    margin: 20px 0;
+    color: #8b2450;
 }
 
-.card p {
+h2 {
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+p {
     font-size: 18px;
     line-height: 1.7;
 }
 
 .big-heart {
-    font-size: 75px;
-
-    animation: heartbeat 1.3s infinite;
+    font-size: 100px;
+    animation: heartbeat 1.4s infinite;
 }
 
 @keyframes heartbeat {
-
     0%, 100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.15);
+        transform: scale(1.18);
     }
-
 }
 
+.welcome-text {
+    font-size: 22px;
+    max-width: 650px;
+    margin: auto;
+}
 
-/* =========================
-   TAP HINT
-========================= */
-
-.tap-hint {
-
+.tap {
     margin-top: 35px;
-
-    font-size: 14px;
-
-    opacity: 0.65;
-
+    font-size: 16px;
+    opacity: 0.7;
     animation: blink 1.5s infinite;
 }
 
 @keyframes blink {
-
     50% {
-        opacity: 0.3;
+        opacity: 0.25;
     }
-
 }
 
-
-/* =========================
-   PHOTO COLLAGE
-========================= */
+/* ---------------- PHOTOS ---------------- */
 
 .photo-collage {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    margin: 25px 0;
+    position: relative;
+    width: min(650px, 90vw);
+    height: 430px;
+    margin: auto;
 }
 
 .photo-collage img {
-
-    width: 100%;
-    height: 260px;
-
+    position: absolute;
+    width: 48%;
+    height: 55%;
     object-fit: cover;
-
     border-radius: 18px;
-
-    box-shadow:
-        0 8px 20px rgba(80, 20, 40, 0.18);
-
+    border: 7px solid white;
+    box-shadow: 0 12px 35px rgba(100, 20, 50, 0.18);
     transition: transform 0.3s;
 }
 
 .photo-collage img:hover {
-    transform: scale(1.04) rotate(1deg);
+    transform: scale(1.04) rotate(0deg);
 }
 
+.her-collage img:nth-child(1) {
+    left: 0;
+    top: 5%;
+    transform: rotate(-7deg);
+}
 
-/* =========================
-   HEART GAME
-========================= */
+.her-collage img:nth-child(2) {
+    right: 0;
+    top: 0;
+    transform: rotate(6deg);
+}
 
-.heart-counter {
+.her-collage img:nth-child(3) {
+    left: 26%;
+    bottom: 0;
+    transform: rotate(-2deg);
+}
 
-    font-size: 20px;
+/* ---------------- HEART GAME ---------------- */
 
+.game-content {
+    width: 100%;
+    height: 100%;
+}
+
+.score {
+    font-size: 22px;
+    font-weight: bold;
     margin: 15px;
 }
 
-#heart-arena {
-
+#heart-area {
     position: relative;
-
-    width: 100%;
-    height: 350px;
-
+    width: min(800px, 90vw);
+    height: min(60vh, 500px);
+    margin: auto;
     border-radius: 25px;
-
-    background:
-        rgba(255, 220, 230, 0.45);
-
+    background: rgba(255,255,255,0.4);
+    border: 2px dashed rgba(160, 50, 90, 0.25);
     overflow: hidden;
-
-    border: 2px dashed rgba(160, 60, 90, 0.2);
 }
 
-.catch-heart {
-
+.game-heart {
     position: absolute;
-
-    font-size: 45px;
-
+    border: none;
+    background: none;
+    font-size: 42px;
     cursor: pointer;
-
-    user-select: none;
-
-    animation:
-        heartPulse 0.8s infinite alternate;
-
     transition: transform 0.2s;
+    animation: heartFloat 1.5s infinite alternate ease-in-out;
 }
 
-.catch-heart:hover {
+.game-heart:hover {
     transform: scale(1.3);
 }
 
-@keyframes heartPulse {
-
+@keyframes heartFloat {
     from {
-        transform: scale(0.9);
+        margin-top: -5px;
     }
 
     to {
-        transform: scale(1.15);
+        margin-top: 8px;
     }
-
 }
 
-
-/* =========================
-   QUIZ
-========================= */
-
-.quiz-box {
-    margin-top: 30px;
-}
-
-.quiz-option {
-
-    display: block;
-
-    width: 100%;
-
-    padding: 16px;
-
-    margin: 12px 0;
-
-    border: none;
-
-    border-radius: 15px;
-
-    background: #ffe3eb;
-
-    color: #65283b;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-}
-
-.quiz-option:hover {
-
-    transform: translateY(-3px);
-
-    background: #ffd0dd;
-}
-
-.correct {
-    background: #b9f2c5 !important;
-}
-
-.wrong {
-    background: #ffc0c0 !important;
-}
-
-#quiz-feedback {
-
-    min-height: 30px;
-
-    margin-top: 15px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   ENVELOPE
-========================= */
-
-.envelope {
-
-    width: 230px;
-    height: 150px;
-
-    margin: 40px auto;
-
-    position: relative;
-
-    cursor: pointer;
-
-    transition: transform 0.4s;
-}
-
-.envelope:hover {
-    transform: scale(1.08);
-}
-
-.envelope-body {
-
-    width: 100%;
-    height: 100%;
-
-    background: #ffd0dc;
-
-    border-radius: 10px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    font-size: 60px;
-
-    box-shadow:
-        0 12px 30px rgba(100, 30, 50, 0.2);
-}
-
-.envelope-top {
-
-    position: absolute;
-
-    width: 0;
-    height: 0;
-
-    border-left: 115px solid transparent;
-    border-right: 115px solid transparent;
-
-    border-top: 80px solid #ffb4c7;
-
-    top: 0;
-
-    z-index: 2;
-}
-
-.love-letter {
-
-    display: none;
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    background: #fff1f5;
-
-    font-size: 20px;
-
-    line-height: 1.7;
-
-    animation: letterOpen 1s ease;
-}
-
-.love-letter.show {
-    display: block;
-}
-
-@keyframes letterOpen {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* =========================
-   TEXT AREAS
-========================= */
-
-textarea {
-
-    width: 100%;
-
-    min-height: 180px;
-
-    resize: vertical;
-
-    padding: 18px;
-
-    margin: 25px 0;
-
-    border-radius: 18px;
-
-    border: 2px solid #f2b9c8;
-
-    outline: none;
-
-    font-size: 17px;
-
-    font-family: inherit;
-
-    background: #fff9fb;
-}
-
-textarea:focus {
-    border-color: #d97996;
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
-
-.main-button,
-.yes-button {
-
-    border: none;
-
-    padding: 15px 30px;
-
+/* ---------------- QUIZ ---------------- */
+
+.quiz-card {
+    background: rgba(255,255,255,0.72);
+    padding: 35px;
     border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(110, 30, 60, 0.15);
+    max-width: 600px;
+    margin: auto;
+}
 
-    cursor: pointer;
-
-    font-size: 17px;
-
+.quiz-option,
+.done-btn,
+#popup-next {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 15px auto;
+    padding: 16px 22px;
+    border: none;
+    border-radius: 30px;
+    background: #fff;
+    color: #7a2447;
+    font-size: 18px;
     font-family: inherit;
-
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(100, 30, 50, 0.12);
     transition: 0.25s;
 }
 
-.main-button {
-
-    background: #d96b89;
-
-    color: white;
-}
-
-.main-button:hover {
-
+.quiz-option:hover,
+.done-btn:hover,
+#popup-next:hover {
     transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 20px rgba(180, 60, 90, 0.25);
+    background: #ffd1df;
 }
 
-.yes-button {
-
-    background: #d94d70;
-
-    color: white;
-
-    font-size: 22px;
-
-    padding: 17px 45px;
-}
-
-.yes-button:hover {
-    transform: scale(1.1);
-}
-
-
-/* =========================
-   MEMORY PUZZLE
-========================= */
-
-#memory-board {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 12px;
-
-    max-width: 500px;
-
-    margin: 30px auto;
-}
-
-.memory-card {
-
-    aspect-ratio: 1;
-
-    border-radius: 15px;
-
-    background: #e98ca5;
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    transition: transform 0.25s;
-}
-
-.memory-card:hover {
-    transform: scale(1.05);
-}
-
-.memory-card.flipped,
-.memory-card.matched {
-
-    background: #fff0f4;
-
-    color: #6a2c40;
-
-}
-
-.memory-card.matched {
-    cursor: default;
-}
-
-
-/* =========================
-   POPUP
-========================= */
+/* ---------------- POPUP ---------------- */
 
 .popup {
-
     position: fixed;
-
     inset: 0;
-
     display: none;
-
     justify-content: center;
     align-items: center;
-
-    background: rgba(70, 20, 35, 0.45);
-
-    z-index: 100;
+    background: rgba(70, 15, 35, 0.45);
+    z-index: 20;
+    padding: 20px;
 }
 
 .popup.show {
     display: flex;
 }
 
-.popup-content {
+.popup-box {
+    width: min(500px, 90vw);
+    background: #fff5f8;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.25);
+}
 
-    width: min(420px, 90vw);
+.popup-heart {
+    font-size: 70px;
+}
 
-    padding: 35px;
+/* ---------------- ENVELOPE ---------------- */
 
+.envelope-container {
+    cursor: pointer;
+    width: 300px;
+    height: 210px;
+    margin: 40px auto;
+    perspective: 700px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #f5a9bd;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(90,20,45,0.2);
+}
+
+.flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 105px solid #df7898;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: transform 0.7s;
+    z-index: 3;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.letter-preview {
+    position: absolute;
+    inset: 35px;
     background: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
 
+.love-letter {
+    display: none;
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.85);
     border-radius: 25px;
-
-    text-align: center;
-
-    animation: popupIn 0.5s ease;
+    box-shadow: 0 10px 30px rgba(90,20,45,0.12);
 }
 
-.popup-image {
-    font-size: 80px;
+.love-letter.show {
+    display: block;
 }
 
-@keyframes popupIn {
+/* ---------------- TEXTAREAS ---------------- */
 
-    from {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-
+textarea {
+    display: block;
+    width: min(650px, 90vw);
+    height: 180px;
+    margin: 30px auto 20px;
+    padding: 20px;
+    resize: none;
+    border: 2px solid #f0b1c3;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.85);
+    color: #60203b;
+    font-family: inherit;
+    font-size: 17px;
+    outline: none;
 }
 
+textarea:focus {
+    border-color: #c95a80;
+    box-shadow: 0 0 0 4px rgba(201,90,128,0.12);
+}
 
-/* =========================
-   FINAL
-========================= */
+.done-btn {
+    background: #d95d87;
+    color: white;
+}
 
-.final-card {
+.sending {
+    min-height: 25px;
+    font-size: 15px;
+}
 
-    max-height: 90vh;
+/* ---------------- COUPLE PHOTOS ---------------- */
+
+.couple-collage img:nth-child(1) {
+    left: 0;
+    top: 3%;
+    transform: rotate(-6deg);
+}
+
+.couple-collage img:nth-child(2) {
+    right: 0;
+    top: 5%;
+    transform: rotate(7deg);
+}
+
+.couple-collage img:nth-child(3) {
+    left: 26%;
+    bottom: 0;
+    transform: rotate(-2deg);
+}
+
+/* ---------------- MEMORY GAME ---------------- */
+
+.memory-board {
+    width: min(600px, 92vw);
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 15px;
+    background: #e889a7;
+    color: transparent;
+    font-size: 35px;
+    cursor: pointer;
+    box-shadow: 0 7px 15px rgba(80,20,40,0.15);
+    transition: transform 0.2s;
+}
+
+.memory-card:hover {
+    transform: scale(1.04);
+}
+
+.memory-card.flipped,
+.memory-card.matched {
+    background: white;
+    color: #8b2450;
+}
+
+.memory-card.matched {
+    cursor: default;
+}
+
+/* ---------------- FINAL ---------------- */
+
+.final-content {
+    max-width: 800px;
 }
 
 .final-hearts {
-    font-size: 40px;
-    margin-bottom: 20px;
+    font-size: 50px;
+    animation: heartbeat 1.5s infinite;
 }
 
-.final-message {
-
-    margin: 25px 0;
-
-    font-size: 18px;
+.final-letter {
+    background: rgba(255,255,255,0.8);
+    padding: 35px;
+    border-radius: 30px;
+    box-shadow: 0 15px 50px rgba(90,20,45,0.15);
+    text-align: left;
 }
 
-.final-message p {
-    margin: 15px 0;
+.final-letter p {
+    margin-bottom: 25px;
 }
 
+.final-letter h2 {
+    text-align: center;
+    color: #b52d5d;
+}
 
-/* =========================
-   MOBILE
-========================= */
+.ring {
+    font-size: 90px;
+    margin-top: 25px;
+    animation: heartbeat 1.4s infinite;
+}
+
+/* ---------------- MOBILE ---------------- */
 
 @media (max-width: 600px) {
 
-    .card {
-        padding: 30px 20px;
-    }
-
-    .card h1 {
-        font-size: 28px;
-    }
-
-    .card h2 {
-        font-size: 21px;
+    .content {
+        padding: 15px;
     }
 
     .photo-collage {
-        grid-template-columns: 1fr;
+        height: 330px;
     }
 
     .photo-collage img {
-        height: 250px;
+        border-width: 5px;
     }
 
-    #heart-arena {
-        height: 300px;
+    #heart-area {
+        height: 55vh;
     }
 
-    #memory-board {
-        grid-template-columns:
-            repeat(3, 1fr);
+    .memory-board {
+        grid-template-columns: repeat(3, 1fr);
     }
 
+    .memory-card {
+        font-size: 28px;
+    }
+
+    .envelope-container {
+        width: 260px;
+        height: 180px;
+    }
+
+    .flap {
+        border-left-width: 130px;
+        border-right-width: 130px;
+        border-top-width: 90px;
+    }
+
+    textarea {
+        height: 150px;
+    }
 }
